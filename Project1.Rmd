@@ -1,0 +1,24 @@
+---
+title: "Best Cafes in Columbus, Ohio"
+date: "May 22, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+My top three places for coffee and sweets. Enjoy!
+
+```{r, echo = FALSE}
+library(leaflet)
+cafe_locations <- data.frame(lat = c(39.9775933, 39.9841547, 39.9824757),
+                 lng = c(-83.0038307, -82.999437, -83.0040125))
+cafe_names <- c("One Line Coffee", "Fox in the Snow Cafe", "Laughlin's Bakery")
+
+cafe_locations %>%
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(popup = cafe_names) %>%
+    setView(lat = 39.9807, lng = -83, zoom = 15)
+```
